@@ -1,0 +1,91 @@
+$primary-color: #363C54;
+$normal-color: #9B9DA9;
+$active-color: #00bebe;
+$default-color: #696D7F;
+@mixin flex-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-justify-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@mixin flex-justify-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-justify-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+@mixin text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@mixin text-ellipsis-row($row) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+@mixin font-size-10 {
+  font-size: 0.12rem;
+  transform: scale(0.83);
+  transform-origin: center;
+}
+
+@mixin font-size-scale($size) {
+  font-size: #{$size}rem;
+  transform: scale($size / 0.12);
+  transform-origin: center;
+}
+
+
+// 毛玻璃
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin content-blur() {
+  // content: '';
+	position: absolute;
+  @include size(100%, 0.46rem);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	filter: blur(5px);
+	z-index: -3;
+	// background-image: url($url);
+	background-position: center top;
+	background-size: contain;
+	// background-attachment: fixed;
+}
+
+// 设置字体
+@mixin set-font($size, $color, $line-height) {
+  font-size: $size;
+  color: $color;
+  line-height: $line-height;
+}
+@mixin word-break {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+@mixin scrolling{
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
