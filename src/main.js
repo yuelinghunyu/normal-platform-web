@@ -7,7 +7,6 @@ import router from "Src/router";
 import { zh, en } from "Src/language";
 import { initCommon, initFunc } from "Src/plugin/config";
 // import { routerPath } from "Src/plugin/login";
-import Abstract from "Src/http/abstract";
 import { getStorage, hasStorage } from "Src/plugin/utils";
 import http from "@/http";
 // 初始化加载js
