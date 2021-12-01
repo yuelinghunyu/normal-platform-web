@@ -27,6 +27,7 @@ import {
   CollapseItem,
   Overlay,
   Popover,
+  ImagePreview,
 } from "vant";
 
 const components = [
@@ -52,6 +53,7 @@ const components = [
   CollapseItem,
   Overlay,
   Popover,
+  ImagePreview,
 ];
 
 const initVant = () => {

@@ -3,7 +3,8 @@ const env = process.env.NODE_ENV;
 const listDev = {
   condition: "dev",
   // 文件地址
-  file: "https://box-filestorage-uat.niohome.com/api/objects/download?token=5ef07fa62f09f78b91405cc2&slug=",
+  file:
+    "https://box-filestorage-uat.niohome.com/api/objects/download?token=5ef07fa62f09f78b91405cc2&slug=",
   // 服务地址
   url: "http://test.inosun.cn",
 };
@@ -11,7 +12,8 @@ const listDev = {
 const listTest = {
   condition: "test",
   // 文件地址
-  file: "https://box-filestorage-uat.niohome.com/api/objects/download?token=5ef07fa62f09f78b91405cc2&slug=",
+  file:
+    "https://box-filestorage-uat.niohome.com/api/objects/download?token=5ef07fa62f09f78b91405cc2&slug=",
   // 服务地址
   url: "http://hrss-test.niohome.com/wz2",
 };
@@ -19,7 +21,8 @@ const listTest = {
 const listProd = {
   condition: "prod",
   // 文件地址
-  file: "https://filestorage-bs.niohome.com/api/objects/download?token=5efde1cbb01bc2df502fe32a&slug=",
+  file:
+    "https://filestorage-bs.niohome.com/api/objects/download?token=5efde1cbb01bc2df502fe32a&slug=",
   // 服务地址
   url: "http://hrwz.niohome.com/wz2",
 };
@@ -45,7 +48,7 @@ if (env === "test")
     encodeURIComponent(window.location.href.replace(/&/i, "{xyz}"));
 if (env === "production")
   checkUrl =
-    "https://hrss.niohome.com/portal/login/check?url=" +
+    "https://hrwz.niohome.com/portal/login/check?url=" +
     encodeURIComponent(window.location.href.replace(/&/i, "{xyz}"));
 
 export { OK, listEnv, checkUrl };

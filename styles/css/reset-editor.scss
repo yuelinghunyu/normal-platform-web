@@ -1,0 +1,23 @@
+.w-e-text-container{
+  z-index: 1000 !important;
+}
+a {
+  color: $active-color !important;
+  text-decoration: none;
+}
+a:link{		/*默认状态*/
+  color: $active-color;
+  text-decoration:none
+}
+a:visited{	/*浏览过的*/
+  color: $active-color;
+  text-decoration:none
+}
+a:hover{	/*悬浮状态*/
+  color: $active-color;
+  text-decoration:none
+}
+a:active{	/*激活过的*/
+  color: $active-color;
+  text-decoration:none
+}

@@ -5,7 +5,7 @@ import {
   getStorage,
   isMobile,
   getEnv,
-} from "Src/plugin/utils";
+} from "Plugin/utils";
 const env = process.env.NODE_ENV;
 
 // 加载企业微信或者飞书sdk

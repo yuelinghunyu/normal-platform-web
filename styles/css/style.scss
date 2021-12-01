@@ -47,7 +47,7 @@ $default-color: #696D7F;
 }
 
 @mixin font-size-scale($size) {
-  font-size: #{$size}rem;
+  font-size: 0.12rem;
   transform: scale($size / 0.12);
   transform-origin: center;
 }
@@ -58,17 +58,17 @@ $default-color: #696D7F;
   width: $width;
   height: $height;
 }
-@mixin content-blur() {
+@mixin content-blur($url) {
   // content: '';
 	position: absolute;
-  @include size(100%, 0.46rem);
+  // @include size(100%, 0.46rem);
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	filter: blur(5px);
+	filter: blur(3px) brightness(50%) sepia(50%);
 	z-index: -3;
-	// background-image: url($url);
+	background-image: url($url);
 	background-position: center top;
 	background-size: contain;
 	// background-attachment: fixed;

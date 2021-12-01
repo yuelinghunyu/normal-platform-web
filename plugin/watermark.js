@@ -3,8 +3,8 @@ function DlWatermark(options) {
     {
       fontSize: 16,
       zIndex: 9999,
-      padding: 30,
-      height: 100,
+      padding: 40,
+      height: 30,
       color: "#ccc",
       text: "蔚来已来",
       opacity: 1,

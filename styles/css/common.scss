@@ -32,24 +32,31 @@ html, body > * {
 //针对所有iPhone6+的放大模式
 @media only screen and (min-device-width: 375px)and (-webkit-min-device-pixel-ratio: 3) {
   html{
-    font-size: 110px;
+    font-size: 100px;
   }
 }
 //针对所有iPhone6+的标准模式,414px写为412px是由于三星Nexus 6为412px，可一并处理
 @media only screen and (min-device-width:412px) and (-webkit-min-device-pixel-ratio: 3) {　　
   html{
-    font-size: 120px;
+    font-size: 100px;
   }
 }
 /*iPhoneX的适配*/ 
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
   html{
-    font-size: 110px;
+    font-size: 100px;
   }
 }
 button, button:hover, li:hover, a:hover , li , a , *:hover, img {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 // 写进html文本中的样式

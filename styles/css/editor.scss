@@ -1,0 +1,36 @@
+.editor .toolbar {
+  width: 100%;
+  border: none;
+}
+.editor .text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: auto;
+}
+.editor .w-e-text {
+  padding: 0;
+  overflow: initial;
+  word-wrap:break-word;
+  word-break: break-all;
+}
+.editor .w-e-text ul li {
+  list-style: square;
+}
+.editor .w-e-text ol li {
+  list-style: decimal;
+}
+.editor .w-e-text table {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.editor .w-e-text img:hover {
+  box-shadow: 0 0 0px #333;
+}
+.w-e-text-container{
+  z-index: 1900 !important;
+}

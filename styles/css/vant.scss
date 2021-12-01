@@ -29,6 +29,7 @@
 .van-list__finished-text,
 .van-list__loading{
   font-size: 0.12rem !important;
+  color: $default-color;
 }
 .van-sticky--fixed,.van-tabbar--fixed{
   max-width: 562.5px;

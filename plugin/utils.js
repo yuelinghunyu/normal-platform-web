@@ -73,7 +73,7 @@ const flexible = (window, callback) => {
   const domEl = window.document.documentElement;
   let timer = null;
   function refresh() {
-    let width = domEl.getBoundingClientRect().width;
+    let width = window.screen.width;
     if (width > 562.5) width = 450;
     const rem = width / 3.75;
     domEl.style.fontSize = `${rem}px`;
@@ -250,13 +250,11 @@ const guid = () => {
   });
 };
 // 页面刷新
-const pageReload = () => {
+const pageReload = (fn) => {
   const browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
   if (browserRule.test(navigator.userAgent)) {
     window.onpageshow = function (event) {
-      if (event.persisted) {
-        window.location.reload();
-      }
+      if (event.persisted) fn && fn();
     };
   }
 };
