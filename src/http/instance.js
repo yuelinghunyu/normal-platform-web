@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Notify } from "vant";
-import { getCookie } from "Src/plugin/utils";
+import { getCookie } from "Plugin/utils";
 const pending = [];
 const CancelToken = axios.CancelToken;
 

@@ -4,6 +4,7 @@ const configWebpack = {
   devtool: env === "development" || env === "test" ? "source-map" : "",
   resolve: {
     alias: {
+      Src: path.resolve(__dirname, "../src/"),
       App: path.resolve(__dirname, "../app/"),
       Modules: path.resolve(__dirname, "../modules/"),
       Plugin: path.resolve(__dirname, "../plugin/"),

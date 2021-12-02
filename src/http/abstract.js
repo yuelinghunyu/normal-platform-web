@@ -1,6 +1,6 @@
 import instance from "Src/http/instance.js";
 import { Notify } from "vant";
-import { checkUrl } from "Src/plugin/constant";
+import { checkUrl } from "Plugin/constant";
 const env = process.env.NODE_ENV;
 let baseURL = "/weiH5Api";
 class Abstract {

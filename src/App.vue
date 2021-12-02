@@ -10,7 +10,7 @@
  */
 // 引用组件
 import AppPage from "Src/components/page/index.vue";
-import { pageReload } from "Src/plugin/utils";
+import { pageReload } from "Plugin/utils";
 export default {
   name: "App",
   components: {
