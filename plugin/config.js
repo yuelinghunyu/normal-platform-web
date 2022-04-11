@@ -3,19 +3,14 @@
  * @description main.js 引用
  */
 import VConsole from "vconsole";
-import { listEnv } from "Plugin/constant";
-import { flexible } from "Plugin/utils";
-import { initRunSdk /**initBaiDuSdk*/ } from "Plugin/addSdk";
+import { listEnv, flexible } from "yuelinghunyu-common-plugin";
 import initVant from "Plugin/vant.js";
 
 const initCommon = () => {
   if (listEnv.condition === "test") new VConsole();
-  flexible(window);
+  flexible();
   initVant();
 };
-const initFunc = async () => {
-  await initRunSdk();
-  // await initBaiDuSdk();
-};
+const initFunc = async () => { };
 
 export { initCommon, initFunc };

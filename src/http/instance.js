@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Notify } from "vant";
-import { getCookie } from "Plugin/utils";
+import { getCookie } from "yuelinghunyu-common-plugin";
 const pending = [];
 const CancelToken = axios.CancelToken;
 

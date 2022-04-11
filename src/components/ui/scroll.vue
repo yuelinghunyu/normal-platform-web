@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import { calcRem, getTransfrom } from "Plugin/utils";
+import { calcRem, getTransfrom } from "yuelinghunyu-common-plugin";
 const pulldownHeight = 60; // 下拉刷新临界点
 const pulldownTop = 40; // 进入下拉刷新位移top
 const moveCount = 200; // 下拉位移系数

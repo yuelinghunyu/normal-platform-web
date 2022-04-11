@@ -1,14 +1,13 @@
 import instance from "Src/http/instance.js";
 import { Notify } from "vant";
-import { checkUrl } from "Plugin/constant";
-const env = process.env.NODE_ENV;
+import { redirectUrl, listEnv } from "yuelinghunyu-common-plugin";
 let baseURL = "/weiH5Api";
 class Abstract {
   baseURL = baseURL;
   headers = {
     ContentType: "application/json;charset=UTF-8",
   };
-  apiAxios({
+  apiAxios ({
     baseURL = this.baseURL,
     headers = this.headers,
     method,
@@ -31,15 +30,19 @@ class Abstract {
           const correctStatus = [200, 201, 204];
           // 200:服务端业务处理正常结束
           if (correctStatus.includes(res.status)) {
-            const serverCode = [0, 1000];
+            const serverCode = [0, 500, 600, 1000];
             const authCode = [401];
-            const code = res.data.code;
+            const redirectCode = [302];
+            const code = res.data ? res.data.code : null;
+            // 业务报错
             if (serverCode.includes(code))
               Notify({ type: "warning", message: res.data.message });
-            if (authCode.includes(code))
-              env === "development"
-                ? Notify({ type: "warning", message: "未授权" })
-                : (window.location.href = checkUrl);
+            // token 校验
+            if (authCode.includes(code)) return redirectUrl(listEnv.condition);
+            // 重定向跳转
+            if (redirectCode.includes(code) && listEnv.condition !== "dev") {
+              return window.location.replace(res.data.message);
+            }
             resolve(res.data);
           } else {
             resolve(res.data || url + "请求失败");
@@ -55,7 +58,7 @@ class Abstract {
   /**
    * GET类型的网络请求
    */
-  getReq({ baseURL, headers, url, data, params, responseType }) {
+  getReq ({ baseURL, headers, url, data, params, responseType }) {
     return this.apiAxios({
       baseURL,
       headers,
@@ -70,7 +73,7 @@ class Abstract {
   /**
    * POST类型的网络请求
    */
-  postReq({ baseURL, headers, url, data, params, responseType }) {
+  postReq ({ baseURL, headers, url, data, params, responseType }) {
     return this.apiAxios({
       baseURL,
       headers,
@@ -85,7 +88,7 @@ class Abstract {
   /**
    * PUT类型的网络请求
    */
-  putReq({ baseURL, headers, url, data, params, responseType }) {
+  putReq ({ baseURL, headers, url, data, params, responseType }) {
     return this.apiAxios({
       baseURL,
       headers,
@@ -100,7 +103,7 @@ class Abstract {
   /**
    * DELETE类型的网络请求
    */
-  deleteReq({ baseURL, headers, url, data, params, responseType }) {
+  deleteReq ({ baseURL, headers, url, data, params, responseType }) {
     return this.apiAxios({
       baseURL,
       headers,

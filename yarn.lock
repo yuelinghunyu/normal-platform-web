@@ -9201,3 +9201,8 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+yuelinghunyu-common-plugin@^3.12.0:
+  version "3.12.0"
+  resolved "https://registry.npmjs.org/yuelinghunyu-common-plugin/-/yuelinghunyu-common-plugin-3.12.0.tgz#142b0df65bf99faa5e4c1e5688ee20cb1065236f"
+  integrity sha512-oGJMddTgnbrFF+zwCjB6WO6P+Z0mUHsON9CqDcmv20hgef8Bk/zSZ+HWo2of5BhQaMMzlO5BnRutT7rgSfee3g==

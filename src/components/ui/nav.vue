@@ -19,7 +19,7 @@
   </ul>
 </template>
 <script>
-import { addClass, removeClass } from "Plugin/utils";
+import { addClass, removeClass } from "yuelinghunyu-common-plugin";
 export default {
   name: "CustomNav",
   props: ["chapterList"],

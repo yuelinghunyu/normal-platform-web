@@ -38,6 +38,7 @@
     "vconsole": "^3.7.0",
     "vue-i18n": "^8.24.5",
     "vue-template-compiler": "^2.6.11",
-    "vue-touch": "^1.1.0"
+    "vue-touch": "^1.1.0",
+    "yuelinghunyu-common-plugin": "^3.12.0"
   }
 }
