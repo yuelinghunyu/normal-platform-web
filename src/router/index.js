@@ -3,10 +3,10 @@ import VueRouter from "vue-router";
 const originalPush = VueRouter.prototype.push;
 const originalReplace = VueRouter.prototype.replace;
 
-VueRouter.prototype.push = function push(location) {
+VueRouter.prototype.push = function push (location) {
   return originalPush.call(this, location).catch((err) => err);
 };
-VueRouter.prototype.replace = function push(location) {
+VueRouter.prototype.replace = function push (location) {
   return originalReplace.call(this, location).catch((err) => err);
 };
 Vue.use(VueRouter);

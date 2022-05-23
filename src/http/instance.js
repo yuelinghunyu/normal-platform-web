@@ -1,12 +1,16 @@
-import axios from "axios";
-import { Notify } from "vant";
-import { getCookie } from "yuelinghunyu-common-plugin";
+import axios from 'axios';
+import { Notify } from 'vant';
+import {
+  getCookie,
+  redirectCommonSso,
+  listEnv,
+} from 'yuelinghunyu-common-plugin';
 const pending = [];
 const CancelToken = axios.CancelToken;
 
 const instance = axios.create({
   timeout: 30000,
-  responseType: "json",
+  responseType: 'json',
 });
 
 const removePending = (config) => {
@@ -21,7 +25,7 @@ const removePending = (config) => {
       JSON.stringify(list.data) === JSON.stringify(config.data)
     ) {
       // 执行取消操作
-      list.cancel("操作太频繁，请稍后再试");
+      list.cancel('操作太频繁，请稍后再试');
       // 从数组中移除记录
       pending.splice(item, 1);
     }
@@ -41,8 +45,8 @@ instance.interceptors.request.use(
       });
     });
     // 暂时
-    if (getCookie("nio_token")) {
-      request.headers["DF-User-Token"] = getCookie("nio_token");
+    if (getCookie('nio_token')) {
+      request.headers['DF-User-Token'] = getCookie('nio_token');
     }
     return request;
   },
@@ -55,17 +59,6 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     removePending(response.config);
-    const errorCode = response.data.status;
-    switch (errorCode) {
-      case 401:
-        // 根据errorCode，对业务做异常处理(和后端约定)
-        break;
-      case 500:
-        // 服务端错误
-        break;
-      default:
-        break;
-    }
     return response;
   },
   (error) => {
@@ -75,17 +68,18 @@ instance.interceptors.response.use(
     // 根据返回的http状态码做不同的处理
     switch (response.status) {
       case 401:
+        redirectCommonSso(listEnv.condition, `${window.location.origin}/login`);
         // token失效
         break;
       case 403:
-        // 没有权限
+        Notify(response.statusText || '参数不正确');
         break;
       case 500:
-        Notify(response.statusText);
+        Notify(response.statusText || '服务500');
         // 服务端错误
         break;
       case 502:
-        Notify(response.statusText || "服务502");
+        Notify(response.statusText || '服务502');
         // 服务端错误
         break;
       default:

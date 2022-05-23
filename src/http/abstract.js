@@ -1,11 +1,11 @@
-import instance from "Src/http/instance.js";
-import { Notify } from "vant";
-import { redirectUrl, listEnv } from "yuelinghunyu-common-plugin";
-let baseURL = "/weiH5Api";
+import instance from 'Src/http/instance.js';
+import { Notify } from 'vant';
+import { redirectCommonSso, listEnv } from 'yuelinghunyu-common-plugin';
+let baseURL = '/weiH5Api';
 class Abstract {
   baseURL = baseURL;
   headers = {
-    ContentType: "application/json;charset=UTF-8",
+    ContentType: 'application/json;charset=UTF-8',
   };
   apiAxios ({
     baseURL = this.baseURL,
@@ -32,25 +32,24 @@ class Abstract {
           if (correctStatus.includes(res.status)) {
             const serverCode = [0, 500, 600, 1000];
             const authCode = [401];
-            const redirectCode = [302];
-            const code = res.data ? res.data.code : null;
+            const redirectCode = [301];
+            const code = res.data ? res.data.status : null;
             // 业务报错
             if (serverCode.includes(code))
-              Notify({ type: "warning", message: res.data.message });
+              Notify({ type: 'warning', message: res.data.message });
             // token 校验
-            if (authCode.includes(code)) return redirectUrl(listEnv.condition);
+            if (authCode.includes(code))
+              return redirectCommonSso(listEnv.condition);
             // 重定向跳转
-            if (redirectCode.includes(code) && listEnv.condition !== "dev") {
+            if (redirectCode.includes(code) && listEnv.condition !== 'dev') {
               return window.location.replace(res.data.message);
             }
-            resolve(res.data);
-          } else {
-            resolve(res.data || url + "请求失败");
           }
+          resolve(res.data);
         })
         .catch((err) => {
           console.log(err);
-          const message = err.data || url + "请求失败";
+          const message = err.data || url + '请求失败';
           reject({ status: false, message, result: null });
         });
     });
@@ -62,7 +61,7 @@ class Abstract {
     return this.apiAxios({
       baseURL,
       headers,
-      method: "GET",
+      method: 'GET',
       url,
       data,
       params,
@@ -77,7 +76,7 @@ class Abstract {
     return this.apiAxios({
       baseURL,
       headers,
-      method: "POST",
+      method: 'POST',
       url,
       data,
       params,
@@ -92,7 +91,7 @@ class Abstract {
     return this.apiAxios({
       baseURL,
       headers,
-      method: "PUT",
+      method: 'PUT',
       url,
       data,
       params,
@@ -107,7 +106,7 @@ class Abstract {
     return this.apiAxios({
       baseURL,
       headers,
-      method: "DELETE",
+      method: 'DELETE',
       url,
       data,
       params,

@@ -5,7 +5,7 @@ import "Styles/css/index.scss";
 import App from "Src/App.vue";
 import router from "Src/router";
 import { zh, en } from "Src/language";
-import { initCommon, initFunc } from "Plugin/config";
+import { initCommon, initFunc } from "Src/plugin/config";
 import { getStorage, hasStorage } from "yuelinghunyu-common-plugin";
 import http from "@/http";
 // 初始化加载js
