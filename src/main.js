@@ -1,7 +1,12 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 // 添加公共样式
-import "Styles/css/index.scss";
+if (!window.__POWERED_BY_QIANKUN__) {
+  require("Src/styles/css/base.scss");
+  require("Src/styles/css/main.scss");
+} else {
+  require("Src/styles/css/main.scss");
+}
 import App from "Src/App.vue";
 import router from "Src/router";
 import { zh, en } from "Src/language";
