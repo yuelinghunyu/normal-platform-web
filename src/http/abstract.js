@@ -1,6 +1,6 @@
 import instance from 'Src/http/instance.js';
 import { Notify } from 'vant';
-import { redirectCommonSso, listEnv } from 'yuelinghunyu-common-plugin';
+import { redirectUrl, listEnv } from 'yuelinghunyu-common-plugin';
 let baseURL = '/weiH5Api';
 class Abstract {
   baseURL = baseURL;
@@ -32,16 +32,15 @@ class Abstract {
           if (correctStatus.includes(res.status)) {
             const serverCode = [0, 500, 600, 1000];
             const authCode = [401];
-            const redirectCode = [301];
-            const code = res.data ? res.data.status : null;
+            const redirectCode = [302];
+            const code = res.data ? res.data.code : null;
             // 业务报错
             if (serverCode.includes(code))
-              Notify({ type: 'warning', message: res.data.message });
+              Notify({ type: "warning", message: res.data.message });
             // token 校验
-            if (authCode.includes(code))
-              return redirectCommonSso(listEnv.condition);
+            if (authCode.includes(code)) return redirectUrl(listEnv.condition);
             // 重定向跳转
-            if (redirectCode.includes(code) && listEnv.condition !== 'dev') {
+            if (redirectCode.includes(code) && listEnv.condition !== "dev") {
               return window.location.replace(res.data.message);
             }
           }

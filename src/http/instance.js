@@ -2,14 +2,14 @@ import axios from 'axios';
 import { Notify } from 'vant';
 import {
   getCookie,
-  redirectCommonSso,
+  redirectUrl,
   listEnv,
 } from 'yuelinghunyu-common-plugin';
 const pending = [];
 const CancelToken = axios.CancelToken;
 
 const instance = axios.create({
-  timeout: 30000,
+  timeout: 60000,
   responseType: 'json',
 });
 
@@ -68,7 +68,7 @@ instance.interceptors.response.use(
     // 根据返回的http状态码做不同的处理
     switch (response.status) {
       case 401:
-        redirectCommonSso(listEnv.condition, `${window.location.origin}/login`);
+        redirectUrl(listEnv.condition);
         // token失效
         break;
       case 403:
